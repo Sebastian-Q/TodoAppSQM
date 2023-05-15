@@ -1,0 +1,12 @@
+<h1>Lista Tareas</h1>
+<label for="tarea">Nombre de la Tarea: </label>
+<input placeholder="Ingresar Tarea" type="text" id="tarea" [(ngModel)]="nombreTarea">
+<button [disabled]="!nombreTarea" (click)="saveTarea()">Guardar</button>
+
+<ul>
+  <li *ngFor="let tarea of tareas; let indice = index" [class.tachado] = "tarea.state">
+    <input (change)="cambiarEstadoTarea()" type="checkbox" [(ngModel)]="tarea.state">
+    {{tarea.name}}
+    <a (click)="eliminarTarea(indice)" class="enlace-terminar">&times;</a>
+  </li>
+</ul>
